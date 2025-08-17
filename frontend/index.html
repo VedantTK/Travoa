@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Trip Planner</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('trips')">My Trips</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Plan a New Trip</h2>
+            <input type="text" id="destination" placeholder="Enter city or country">
+            <input type="date" id="travelDate">
+            <button onclick="planTrip()">Plan Trip</button>
+            <div id="destinationInfo"></div>
+        </section>
+        <section id="trips" style="display: none;">
+            <h2>My Trips</h2>
+            <ul id="tripList"></ul>
+        </section>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

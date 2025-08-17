@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+}
+input, button {
+    padding: 10px;
+    margin: 5px;
+}
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #555;
+}
+#destinationInfo img {
+    max-width: 100%;
+    height: auto;
+}

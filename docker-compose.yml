@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - trip-planner-network
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - OPEN_WEATHER_API_KEY=${OPEN_WEATHER_API_KEY}
+      - UNSPLASH_ACCESS_KEY=${UNSPLASH_ACCESS_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - trip-planner-network
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - trip-planner-network
+networks:
+  trip-planner-network:
+    driver: bridge
+volumes:
+  db-data:
